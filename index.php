@@ -14,11 +14,33 @@
 
     <div class = "container">
         <div class = "chat_box">
+
+            <?php
+
+                $query = "SELECT * FROM chat ORDER BY ID DESC";
+                $run = $con->query($query);
+
+                while($row = $run->fetch_array())  :   
+            ?>
             <div class = "chat_data">
-                <span class = "username"> Tanay:  </span>
-                <span class = "message"> How You Doing ? </span>
-                <span class = "time"> 22:42 </span>
+                <span class = "username">
+                    <?php
+                        echo $row['Name'];
+                    ?>
+                </span> :
+                <span class = "message">
+                    <?php
+                        echo $row['Message'];
+                    ?>
+                </span>
+                <span class = "time">
+                    <?php
+                        echo $row['Date'];
+                    ?>
+                </span>
             </div>
+
+            <?php endwhile ?> 
         </div> 
     <form method = "POST" action = "index.php">
     <input type = "text" name = "name" placeholder = "Name"/>
